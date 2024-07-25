@@ -3,15 +3,14 @@ import fs from 'fs'
 import path from 'path'
 
 async function main() {
-  const Contract = await ethers.getContractFactory('TestNFT')
+  const Contract = await ethers.getContractFactory('PERC20Sample')
 
-  console.log('Deploying NFT...')
+  console.log('Deploying PERC20 token...')
   const contract = await Contract.deploy()
 
   await contract.waitForDeployment()
   const contractAddress = await contract.getAddress()
-
-  console.log('NFT deployed to:', contractAddress)
+  console.log('PERC20 token deployed to:', contractAddress)
 
   const deployedAddressPath = path.join(__dirname, '..', 'utils', 'deployed-address.ts')
 
@@ -26,4 +25,4 @@ main()
   .catch((error) => {
     console.error(error)
     process.exit(1)
-  })
+})
